@@ -1,10 +1,15 @@
+import Navbar from "./components/MyNavbar";
 import { useEffect, useState } from "react";
+import MyContext from "./my_context";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./views/Home";
+import Detalle from "./views/Detalle";
 
 function App() {
   const endpoint = "/pizzas.json";
 
   const [pizzas, setPizzas] = useState([])
-  // const sharedState = { pizzas, setPizzas }
+  const sharedState = { pizzas, setPizzas }
 
   const getPizzas = async () => {
     const response = await fetch(endpoint)
@@ -20,7 +25,15 @@ function App() {
 
   return (
     <div className="App">
-      hola
+      <MyContext.Provider value={sharedState}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>      
+            <Route path="/" element={<Home />} />
+            <Route path="/detalle" element={<Detalle />} />
+          </Routes>
+        </BrowserRouter>
+      </MyContext.Provider>
     </div>
   );
 }
