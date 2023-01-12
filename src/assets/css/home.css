@@ -1,0 +1,9 @@
+.pizza-background {
+    display: block;
+    margin: auto;
+    padding-left: 80px;
+    width: 1600px;
+    height: 200px;
+    background-position: center; /* Center the image */
+    background-color: #cccccc; /* Used if the image is unavailable */
+  }
