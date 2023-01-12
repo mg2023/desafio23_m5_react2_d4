@@ -4,6 +4,7 @@ import MyContext from "./my_context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Detalle from "./views/Detalle";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const endpoint = "/pizzas.json";
