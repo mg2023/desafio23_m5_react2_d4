@@ -1,4 +1,4 @@
-export default function Detalle() {
+export default function Carrito() {
     return (
       <div >
         <h1>Detalle</h1>
