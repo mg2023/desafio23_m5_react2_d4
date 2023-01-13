@@ -17,7 +17,7 @@ function App() {
     const response = await fetch(endpoint)
     let data = await response.json()
     setPizzas(data)
-    console.log(data)
+    // console.log(data)
   }
 
   useEffect(() => {
