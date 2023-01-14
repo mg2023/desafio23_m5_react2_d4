@@ -30,9 +30,9 @@ function App() {
       <MyContext.Provider value={sharedState}>
         <BrowserRouter>
           <Navbar />
-          <Routes>      
+          <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/pizza" element={<Pizza />} />
+            <Route path="/pizza/:id" element={<Pizza />} />
             <Route path="/carrito" element={<Carrito />} />
           </Routes>
         </BrowserRouter>
