@@ -1,4 +1,9 @@
 .links {
     text-decoration: none;
     color: white;
+    font-size: 20px ;
   }
+
+.myNavbar{
+  height: 40px;
+}  

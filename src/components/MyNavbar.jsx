@@ -7,21 +7,18 @@ export default function MyNavbar() {
 
   return (
     <Navbar bg="info" variant="dark">
-      <Container>
-        <Navbar.Brand href="#home">
-          {/* <Link className='links' to="/">🍕Pizzeria Mamma Mia! </Link> */}
-          hola
-        </Navbar.Brand>
+      <Container className='myNavbar'>
+        <div>
+          <Link className='links' to="/">🍕Pizzeria Mamma Mia! </Link>
+        </div>
         <Navbar.Collapse className="justify-content-end">
-          {/* <Link to="/carrito">🛒</Link> */}
-          chao
-          <Navbar.Brand>
+          <Link to="/carrito">🛒</Link>
+          <div className='links' >
             $134.640
-          </Navbar.Brand>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   )
 
 }
-
