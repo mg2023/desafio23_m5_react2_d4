@@ -1,6 +1,6 @@
 import Navbar from "./components/MyNavbar";
 import { useEffect, useState } from "react";
-import MyContext from "./my_context";
+import PizzasContext from "./contexts/PizzasContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Pizza from "./views/Pizza";
@@ -27,7 +27,7 @@ function App() {
 
   return (
     <div className="App">
-      <MyContext.Provider value={sharedState}>
+      <PizzasContext.Provider value={sharedState}>
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -36,7 +36,7 @@ function App() {
             <Route path="/carrito" element={<Carrito />} />
           </Routes>
         </BrowserRouter>
-      </MyContext.Provider>
+      </PizzasContext.Provider>
     </div>
   );
 }

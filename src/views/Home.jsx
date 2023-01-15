@@ -4,10 +4,8 @@ import "../assets/css/home.css"
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import { useContext } from 'react';
-import MyContext from "../my_context";
+import MyContext from "../contexts/PizzasContext";
 import { useNavigate } from "react-router";
 
 // Aca hay que ver como desplegar varias card de forma dinamica en funcion de la api
@@ -24,8 +22,7 @@ export default function Home() {
         backgroundImage: `url(${fotopizza})`,
       }}>
       </div>
-      {/* <Container className="mt-4 mb-4"> */}
-      <Container className="galeria grid-columns-5 p-3">
+      <Container className="galeria grid-columns-3">
         {pizzas.map((pizza) => (
           <Card key={pizza.id} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={pizza.img} />
