@@ -2,7 +2,7 @@
     display: block;
     margin: auto;
     padding-left: 80px;
-    width: 1600px;
+    width: auto;
     height: 200px;
     background-position: center; /* Center the image */
     background-color: #cccccc; /* Used if the image is unavailable */
@@ -10,4 +10,13 @@
 
   .listado-pizzas{
     list-style:none 
+  }
+
+  .galeria {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .grid-columns-5 {
+    grid-template-columns: repeat(3, 1fr);
   }

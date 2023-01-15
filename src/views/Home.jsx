@@ -24,7 +24,8 @@ export default function Home() {
         backgroundImage: `url(${fotopizza})`,
       }}>
       </div>
-      <Container className="mt-4 mb-4">
+      {/* <Container className="mt-4 mb-4"> */}
+      <Container className="galeria grid-columns-5 p-3">
         {pizzas.map((pizza) => (
           <Card key={pizza.id} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={pizza.img} />
