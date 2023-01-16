@@ -1,17 +1,15 @@
 .detalle-pizza{
     display: flex;
+    margin-top: 40px;
 }
 
 .img-pizza-seleccionada{  
-        /* display: block;
-        margin: auto;
-        padding-left: 80px; */
-        /* width: 100 px;
-        height: 100 px; */
-        /* background-position: center; Center the image */
-        /* background-color: #cccccc; Used if the image is unavailable */
-        width: 400px;
-        height: 400px;
-      
+    width: 400px;
+    height: 400px;
+}
+
+.info-pizza{
+    margin: 20px;
+
 
 }
