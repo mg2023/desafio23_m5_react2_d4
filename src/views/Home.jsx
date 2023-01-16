@@ -6,7 +6,7 @@ import { useContext } from 'react';
 
 import fotopizza from '../assets/img/pizza.PNG'
 import PizzasContext from "../contexts/PizzasContext";
-import DescrPizzaContext from '../contexts/DescrPizzaContext';
+// import DescrPizzaContext from '../contexts/DescrPizzaContext';
 import "../assets/css/home.css"
 
 
@@ -16,14 +16,14 @@ export default function Home() {
   // eslint-disable-next-line
   const { pizzas, setPizzas  } = useContext(PizzasContext)
   // eslint-disable-next-line
-  const { pizzaSeleccionada, setPizzaSeleccionada  } = useContext(DescrPizzaContext)
+  // const { pizzaSeleccionada, setPizzaSeleccionada  } = useContext(DescrPizzaContext)
   const navigate = useNavigate();
 
-  const setDescrPizza = (id) => {
-    const pizzaIndex = pizzas.findIndex((f) => f.id === id)
-    setPizzaSeleccionada(pizzas[pizzaIndex])
-    navigate(`/pizza/${id}`)
-  }
+  // const setDescrPizza = (id) => {
+  //   const pizzaIndex = pizzas.findIndex((f) => f.id === id)
+  //   setPizzaSeleccionada(pizzas[pizzaIndex])
+  //   navigate(`/pizza/${id}`)
+  // }
 
   return (
     <div>
@@ -48,7 +48,7 @@ export default function Home() {
                 {pizza.price}
                 {/* {pizza.desc} */}
               </Card.Text>
-              <Button variant="primary" onClick={() => setDescrPizza(pizza.id) } >Ver más👀</Button>
+              <Button variant="primary" onClick={() => navigate(`/pizza/${pizza.id}`) } >Ver más👀</Button>
               <Button variant="danger">Añadir🛒</Button>
             </Card.Body>
           </Card>
