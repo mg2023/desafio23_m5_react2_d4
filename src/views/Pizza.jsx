@@ -1,10 +1,11 @@
 // import { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 
 import PizzasContext from "../contexts/PizzasContext";
+import CarritoContext from "../contexts/CarritoContext";
 import "../assets/css/pizza.css"
 
 const Pizza = () => {
