@@ -4,16 +4,16 @@ import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
-// import PizzasContext from "../contexts/PizzasContext";
+import PizzasContext from "../contexts/PizzasContext";
 import CarritoContext from "../contexts/CarritoContext";
 
 import "../assets/css/pizza.css"
 
-import pizzas from "../data/pizzas.json"
+// import pizzas from "../data/pizzas.json"
 
 export default function Pizza() {
   const { id } = useParams()
-  // const { pizzas } = useContext(PizzasContext)
+  const { pizzas } = useContext(PizzasContext)
   const { setCarrito } = useContext(CarritoContext)
 
   const pizza = pizzas.filter(pizza => pizza.id === id)
@@ -46,7 +46,9 @@ export default function Pizza() {
           </div>
           <div className='info-pizza'>
             <div className='name-pizza'>
-              <p>{pizza[0].name}</p></div>
+              <p>{pizza[0].name}</p>
+              {/* {pizza[0].name} */}
+            </div>
             <div> {pizza[0].desc}</div>
             <div className='titulo-ingredientes'> Ingredientes:</div>
 

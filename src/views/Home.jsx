@@ -5,27 +5,19 @@ import Container from 'react-bootstrap/Container';
 import { useContext } from 'react';
 
 import fotopizza from '../assets/img/pizza.PNG'
-// import PizzasContext from "../contexts/PizzasContext";
+import PizzasContext from "../contexts/PizzasContext";
 import CarritoContext from "../contexts/CarritoContext";
 import "../assets/css/home.css"
 
-import pizzas from "../data/pizzas.json"
+// import pizzas from "../data/pizzas.json"
 
 export default function Home() {
 
-  // const { pizzas } = useContext(PizzasContext)
-  const { setCarrito  } = useContext(CarritoContext)
+  const { pizzas } = useContext(PizzasContext)
+  const { setCarrito } = useContext(CarritoContext)
   const navigate = useNavigate();
 
-  // const setDescrPizza = (id) => {
-  //   const pizzaIndex = pizzas.findIndex((f) => f.id === id)
-  //   setPizzaSeleccionada(pizzas[pizzaIndex])
-  //   navigate(`/pizza/${id}`)
-  // }
-
   const agregarAlCarrito = (id, price, name, img) => {
-    // console.log(id)
-    // console.log(price)
     setCarrito((currItems) => {
       const isItemsFound = currItems.find((item) => item.id === id);
       if (isItemsFound) {
@@ -37,7 +29,7 @@ export default function Home() {
           }
         });
       } else {
-        return [...currItems, { id, quantity: 1, price , img, name }];
+        return [...currItems, { id, quantity: 1, price, img, name }];
       }
     });
   };
@@ -61,17 +53,15 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Card.Text>
-                <div className="precio-pizza">
-                  ${pizza.price}
-                </div>  
-              </Card.Text>
-              <div className="botones">
-              <Button variant="primary" onClick={() => navigate(`/pizza/${pizza.id}`) } >Ver más 👀</Button>
-              {/* Aca no entiendo por que al onclick no se le puede pasar una funcion directamente y tiene que ser con funcion flecha */}
-              <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price, pizza.name, pizza.img)}>Añadir 🛒</Button>
+              <div className="precio-pizza">
+                ${pizza.price}
               </div>
-              
+            
+              <div className="botones">
+                <Button variant="primary" onClick={() => navigate(`/pizza/${pizza.id}`)} >Ver más 👀</Button>
+                {/* Aca no entiendo por que al onclick no se le puede pasar una funcion directamente y tiene que ser con funcion flecha */}
+                <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price, pizza.name, pizza.img)}>Añadir 🛒</Button>
+              </div>
             </Card.Body>
           </Card>
         ))}

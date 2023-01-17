@@ -1,9 +1,9 @@
 import Navbar from "./components/MyNavbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// import PizzasContext from "./contexts/PizzasContext";
+import PizzasContext from "./contexts/PizzasContext";
 import CarritoContext from "./contexts/CarritoContext";
 import Home from "./views/Home";
 import Pizza from "./views/Pizza";
@@ -12,29 +12,28 @@ import Carrito from "./views/Carrito";
 
 export default function App() {
 
-  // const endpoint = "/pizzas.json";
+  const endpoint = "./pizzas.json";
 
-  // const [pizzas, setPizzas] = useState([])
-  // const sharedPizzasContexState = { pizzas, setPizzas }
+  const [pizzas, setPizzas] = useState([])
+  const sharedPizzasContextState = { pizzas, setPizzas }
 
   const [carrito, setCarrito] = useState([])
-  const sharedCarritoContexState = { carrito, setCarrito }
+  const sharedCarritoContextState = { carrito, setCarrito }
 
-  // const getPizzas = async () => {
-  //   const response = await fetch(endpoint)
-  //   let data = await response.json()
-  //   setPizzas(data)
-  // }
+  const getPizzas = async () => {
+    const response = await fetch(endpoint)
+    let data = await response.json()
+    setPizzas(data)
+  }
 
-  // useEffect(() => {
-  //   getPizzas()
-  // }, [])
+  useEffect(() => {
+    getPizzas()
+  }, [])
 
   return (
-    <div className="App">
-      
-      <CarritoContext.Provider value={sharedCarritoContexState}>
-      {/* <PizzasContext.Provider value={sharedPizzasContexState}> */}
+    <div className="App">      
+      <CarritoContext.Provider value={sharedCarritoContextState}>
+      <PizzasContext.Provider value={sharedPizzasContextState}>
         <Router>
           <Navbar />
           <Routes>
@@ -43,7 +42,7 @@ export default function App() {
             <Route path="/carrito" element={<Carrito />} />
           </Routes>
         </Router>                
-      {/* </PizzasContext.Provider>   */}
+      </PizzasContext.Provider>  
       </CarritoContext.Provider>     
     </div>
   );

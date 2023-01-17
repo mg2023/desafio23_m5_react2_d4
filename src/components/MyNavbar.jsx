@@ -7,7 +7,7 @@ import { useContext } from 'react';
 
 export default function MyNavbar() {
 
-  const { carrito, setCarrito  } = useContext(CarritoContext)
+  const { carrito  } = useContext(CarritoContext)
 
 
   const totalPrice = carrito.reduce(
