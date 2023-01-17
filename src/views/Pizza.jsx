@@ -56,7 +56,7 @@ export default function Pizza () {
             </ul>
             <div>Precio: {pizza[0].price}</div>
             {/* <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price)}>Añadir🛒</Button> */}
-            <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price, pizza.name, pizza.img)}>Añadir🛒</Button>
+            <Button variant="danger" onClick={() => agregarAlCarrito(pizza[0].id, pizza[0].price, pizza[0].name, pizza[0].img)}>Añadir🛒</Button>
           </div>
         </Container>
         :
