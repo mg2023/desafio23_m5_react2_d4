@@ -104,34 +104,3 @@ export default function Carrito() {
     </Container>
   );
 }
-
-// return (
-//   <Container className='mt-2'>
-//     <div >
-//       <h3>Detalles del pedido</h3>
-//       <div>
-//         <ul className='listado-compra'>
-//           {carrito.map((item) => (
-//             <li key={item.id}>
-//               <div className='contenedor-img-carrito'>
-//                 {<img src={item.img} alt="Imagen pizza" style={{ width: '100px', }} />}
-//               </div>
-//               {item.name}
-//               {
-//                 getQuantityById(item.id) > 0 &&(
-//                   <Button variant="danger" onClick={() => restarAlCarrito(item.id)}> - </Button>
-//                 )
-//               }
-//               {item.quantity}
-//               <Button variant="primary" onClick={() => agregarAlCarrito(item.id, item.price, item.name, item.img)}> + </Button>
-//             </li>
-//           ))}
-//         </ul>
-//         <div>
-//           Total: ${totalPrice}
-//         </div>
-//       </div>
-//     </div>
-//   </Container>
-// );
-

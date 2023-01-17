@@ -9,7 +9,6 @@ import PizzasContext from "../contexts/PizzasContext";
 import CarritoContext from "../contexts/CarritoContext";
 import "../assets/css/home.css"
 
-// import pizzas from "../data/pizzas.json"
 
 export default function Home() {
 

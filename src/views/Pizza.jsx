@@ -9,8 +9,6 @@ import CarritoContext from "../contexts/CarritoContext";
 
 import "../assets/css/pizza.css"
 
-// import pizzas from "../data/pizzas.json"
-
 export default function Pizza() {
   const { id } = useParams()
   const { pizzas } = useContext(PizzasContext)
@@ -19,8 +17,6 @@ export default function Pizza() {
   const pizza = pizzas.filter(pizza => pizza.id === id)
 
   const agregarAlCarrito = (id, price, name, img) => {
-    // console.log(id)
-    // console.log(price)
     setCarrito((currItems) => {
       const isItemsFound = currItems.find((item) => item.id === id);
       if (isItemsFound) {
@@ -47,7 +43,6 @@ export default function Pizza() {
           <div className='info-pizza'>
             <div className='name-pizza'>
               <p>{pizza[0].name}</p>
-              {/* {pizza[0].name} */}
             </div>
             <div> {pizza[0].desc}</div>
             <div className='titulo-ingredientes'> Ingredientes:</div>
@@ -70,43 +65,3 @@ export default function Pizza() {
     </>
   )
 }
-
-
-
-// export default function Pizza() {
-//   let { id } = useParams();
-//   const [pizzaSeleccionada, setPizzaSeleccionada] = useState({})
-//   const { pizzas } = useContext(PizzasContext)
-//   // const pizzaIndex = pizzas.findIndex((f) => f.id === id)
-
-//   // useEffect(() => {
-//   //   setPizzaSeleccionada(pizzas[pizzaIndex])
-//   // }, [pizzas, pizzaIndex])
-
-//   if (pizzaSeleccionada) {
-//     return (
-//       <Container className="detalle-pizza">
-//         <div>
-//           <img className="img-pizza-seleccionada" src={pizzaSeleccionada.img} alt="imagen de referencia pizza" />
-//         </div>
-//         <div className='info-pizza'>
-//         <div> {pizzaSeleccionada.name}</div>
-//         <div> {pizzaSeleccionada.desc}</div>
-//         {console.log(pizzaSeleccionada)}
-//         {/* <ul>
-//           {pizzaSeleccionada.ingredients.map((ingredientes) => (
-//             <li>🍕 {ingredientes}</li>
-//           ))}
-//         </ul> */}
-//         <div> {pizzaSeleccionada.price}</div>
-//         </div>
-//       </Container>
-//     )
-//   }
-//   else {
-//     return (
-//       <>
-//       </>
-//     )
-//   }
-// }
