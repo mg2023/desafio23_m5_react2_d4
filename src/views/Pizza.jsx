@@ -5,15 +5,34 @@ import { useContext, useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 
 import PizzasContext from "../contexts/PizzasContext";
+import CarritoContext from "../contexts/CarritoContext";
 import "../assets/css/pizza.css"
 
 const Pizza = () => {
   const { id } = useParams()
   const { pizzas } = useContext(PizzasContext)
+  const { carrito, setCarrito  } = useContext(CarritoContext)
+
   const pizza = pizzas.filter(pizza => pizza.id === id)
 
-  console.log(pizzas)
-  console.log(pizza)
+  const agregarAlCarrito = (id, price) => {
+    // console.log(id)
+    // console.log(price)
+    setCarrito((currItems) => {
+      const isItemsFound = currItems.find((item) => item.id === id);
+      if (isItemsFound) {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        });
+      } else {
+        return [...currItems, { id, quantity: 1, price }];
+      }
+    });
+  };
 
   return (
     <>
@@ -33,7 +52,7 @@ const Pizza = () => {
               ))}
             </ul>
             <div>Precio: {pizza[0].price}</div>
-            <Button variant="danger">Añadir🛒</Button>
+            <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price)}>Añadir🛒</Button>
           </div>
         </Container>
         :
