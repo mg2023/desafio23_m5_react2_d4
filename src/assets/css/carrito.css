@@ -1,0 +1,24 @@
+.listado-compra{
+    list-style:none 
+}
+
+/* .contenedor-img-carrito{
+
+
+
+} */
+
+.name-pizza p:first-letter{
+    text-transform: uppercase;
+    
+}
+
+.name-pizza p{    
+    font-weight: bold;
+}
+
+.valor-total-carrito{
+    font-weight: bold;
+    font-size: large;
+
+}

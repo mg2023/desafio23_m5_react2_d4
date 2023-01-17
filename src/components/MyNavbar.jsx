@@ -9,6 +9,7 @@ export default function MyNavbar() {
 
   const { carrito, setCarrito  } = useContext(CarritoContext)
 
+
   const totalPrice = carrito.reduce(
     (acc, curr) => acc + curr.quantity * curr.price,
     0
@@ -21,9 +22,9 @@ export default function MyNavbar() {
           <Link className='links' to="/">🍕Pizzeria Mamma Mia! </Link>
         </div>
         <Navbar.Collapse className="justify-content-end">
-          <Link to="/carrito">🛒</Link>
+          <Link to="/carrito">🛒  </Link>
           <div className='links' >
-            ${totalPrice}
+            $  {totalPrice}
           </div>
         </Navbar.Collapse>
       </Container>
