@@ -6,17 +6,13 @@ import { useContext } from 'react';
 
 import fotopizza from '../assets/img/pizza.PNG'
 import PizzasContext from "../contexts/PizzasContext";
-// import DescrPizzaContext from '../contexts/DescrPizzaContext';
+import CarritoContext from "../contexts/CarritoContext";
 import "../assets/css/home.css"
-
-
 
 export default function Home() {
 
-  // eslint-disable-next-line
-  const { pizzas, setPizzas  } = useContext(PizzasContext)
-  // eslint-disable-next-line
-  // const { pizzaSeleccionada, setPizzaSeleccionada  } = useContext(DescrPizzaContext)
+  const { pizzas } = useContext(PizzasContext)
+  const { carrito, setCarrito  } = useContext(CarritoContext)
   const navigate = useNavigate();
 
   // const setDescrPizza = (id) => {
@@ -24,6 +20,25 @@ export default function Home() {
   //   setPizzaSeleccionada(pizzas[pizzaIndex])
   //   navigate(`/pizza/${id}`)
   // }
+
+  const agregarAlCarrito = (id, price) => {
+    // console.log(id)
+    // console.log(price)
+    setCarrito((currItems) => {
+      const isItemsFound = currItems.find((item) => item.id === id);
+      if (isItemsFound) {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        });
+      } else {
+        return [...currItems, { id, quantity: 1, price }];
+      }
+    });
+  };
 
   return (
     <div>
@@ -49,7 +64,8 @@ export default function Home() {
                 {/* {pizza.desc} */}
               </Card.Text>
               <Button variant="primary" onClick={() => navigate(`/pizza/${pizza.id}`) } >Ver más👀</Button>
-              <Button variant="danger">Añadir🛒</Button>
+              {/* Aca no entiendo por que al onclick no se le puede pasar una funcion directamente y tiene que ser con funcion flecha */}
+              <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price)}>Añadir🛒</Button>
             </Card.Body>
           </Card>
         ))}
