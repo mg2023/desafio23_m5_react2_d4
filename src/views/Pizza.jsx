@@ -4,22 +4,21 @@ import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
-import PizzasContext from "../contexts/PizzasContext";
+// import PizzasContext from "../contexts/PizzasContext";
 import CarritoContext from "../contexts/CarritoContext";
 
 import "../assets/css/pizza.css"
 
-const Pizza = () => {
+import pizzas from "../data/pizzas.json"
+
+export default function Pizza () {
   const { id } = useParams()
-  const { pizzas } = useContext(PizzasContext)
-  const { carrito, setCarrito  } = useContext(CarritoContext)
+  // const { pizzas } = useContext(PizzasContext)
+  const { setCarrito  } = useContext(CarritoContext)
 
-
-
-  // console.log(typeof(pizzas))
   const pizza = pizzas.filter(pizza => pizza.id === id)
 
-  const agregarAlCarrito = (id, price) => {
+  const agregarAlCarrito = (id, price, name, img) => {
     // console.log(id)
     // console.log(price)
     setCarrito((currItems) => {
@@ -33,12 +32,11 @@ const Pizza = () => {
           }
         });
       } else {
-        return [...currItems, { id, quantity: 1, price }];
+        return [...currItems, { id, quantity: 1, price , img, name }];
       }
     });
   };
 
-  // console.log(pizzas)
   return (
     <>
       {pizza.length > 0 ?
@@ -50,26 +48,26 @@ const Pizza = () => {
             <div> {pizza[0].name}</div>
             <div> {pizza[0].desc}</div>
             <div> Ingredientes</div>
-            {console.log(pizza[0])}
+        
             <ul>
               {pizza[0].ingredients.map((ingredient, i) => (
                 <li key={i}>🍕 {ingredient}</li>
               ))}
             </ul>
             <div>Precio: {pizza[0].price}</div>
-            <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price)}>Añadir🛒</Button>
+            {/* <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price)}>Añadir🛒</Button> */}
+            <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price, pizza.name, pizza.img)}>Añadir🛒</Button>
           </div>
         </Container>
         :
         <div>
         </div>
-
       }
     </>
   )
 }
 
-export default Pizza
+
 
 // export default function Pizza() {
 //   let { id } = useParams();

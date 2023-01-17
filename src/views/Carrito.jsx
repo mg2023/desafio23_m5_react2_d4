@@ -1,48 +1,30 @@
 import { useContext } from 'react';
 
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 
-import PizzasContext from "../contexts/CarritoContext";
 import CarritoContext from "../contexts/CarritoContext"
 
+export default function Carrito() {
 
-// export default function Carrito() {
-const Carrito = (pizzas) => {
-  //Aca falla el use de context, y esta identico en la vista pizza
-  // const { pizzas } = useContext(PizzasContext)
-  const { carrito, setCarrito } = useContext(CarritoContext)
-
-  // console.log(carrito)
-  // console.log(pizzas)
-
-  console.log(typeof(pizzas))
-  //   const getQuantityById = (id) => {
-  //   return carrito.find((item) => item.id === id)?.quantity || 0;
-  // };
-
-  // const quantityPerItem = getQuantityById(id);
-
-
-  // console.log(pizzas.filter(pizza => pizza.id === 'P002') )     
+  const { carrito } = useContext(CarritoContext)
 
   return (
     <Container>
-      hola
-      {/* <div >
+      <div >
         <h1>Detalles del pedido</h1>
         <div>
-            <ul>
+          <ul>
             {carrito.map((item) => (
-            <li key={item.id}>
-                {item.id}, {item.quantity}, {item.price} </li>
-            ))
-            }
-            </ul>
+              <li key={item.id}>
+                {/* {<img src={item.img} alt="Imagen pizza" style={{ width: '100px', }} />} */}
+                {item.name}
+                {item.quantity}
+              </li>
+            ))}
+          </ul>
         </div>
-      </div> */}
+      </div>
     </Container>
   );
 }
 
-export default Carrito

@@ -5,14 +5,16 @@ import Container from 'react-bootstrap/Container';
 import { useContext } from 'react';
 
 import fotopizza from '../assets/img/pizza.PNG'
-import PizzasContext from "../contexts/PizzasContext";
+// import PizzasContext from "../contexts/PizzasContext";
 import CarritoContext from "../contexts/CarritoContext";
 import "../assets/css/home.css"
 
+import pizzas from "../data/pizzas.json"
+
 export default function Home() {
 
-  const { pizzas } = useContext(PizzasContext)
-  const { carrito, setCarrito  } = useContext(CarritoContext)
+  // const { pizzas } = useContext(PizzasContext)
+  const { setCarrito  } = useContext(CarritoContext)
   const navigate = useNavigate();
 
   // const setDescrPizza = (id) => {
@@ -21,7 +23,7 @@ export default function Home() {
   //   navigate(`/pizza/${id}`)
   // }
 
-  const agregarAlCarrito = (id, price) => {
+  const agregarAlCarrito = (id, price, name, img) => {
     // console.log(id)
     // console.log(price)
     setCarrito((currItems) => {
@@ -35,7 +37,7 @@ export default function Home() {
           }
         });
       } else {
-        return [...currItems, { id, quantity: 1, price }];
+        return [...currItems, { id, quantity: 1, price , img, name }];
       }
     });
   };
@@ -65,7 +67,8 @@ export default function Home() {
               </Card.Text>
               <Button variant="primary" onClick={() => navigate(`/pizza/${pizza.id}`) } >Ver más👀</Button>
               {/* Aca no entiendo por que al onclick no se le puede pasar una funcion directamente y tiene que ser con funcion flecha */}
-              <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price)}>Añadir🛒</Button>
+              <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price, pizza.name, pizza.img)}>Añadir🛒</Button>
+              
             </Card.Body>
           </Card>
         ))}
