@@ -1,20 +1,22 @@
 import Navbar from "./components/MyNavbar";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import PizzasContext from "./contexts/PizzasContext";
-// import DescrPizzaContext from "./contexts/DescrPizzaContext";
+import CarritoContext from "./contexts/CarritoContext";
 import Home from "./views/Home";
 import Pizza from "./views/Pizza";
 import Carrito from "./views/Carrito";
-
 
 function App() {
   const endpoint = "/pizzas.json";
 
   const [pizzas, setPizzas] = useState([])
   const sharedPizzasContexState = { pizzas, setPizzas }
+
+  const [carrito, setCarrito] = useState([])
+  const sharedCarritoContexState = {carrito, setCarrito }
 
   const getPizzas = async () => {
     const response = await fetch(endpoint)
@@ -26,18 +28,19 @@ function App() {
     getPizzas()
   }, [])
 
-
   return (
     <div className="App">
       <PizzasContext.Provider value={sharedPizzasContexState}>
-        <BrowserRouter>
+      <CarritoContext.Provider value={sharedCarritoContexState}>
+        <Router>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/pizza/:id" element={<Pizza />} />
             <Route path="/carrito" element={<Carrito />} />
           </Routes>
-        </BrowserRouter>        
+        </Router>        
+      </CarritoContext.Provider>   
       </PizzasContext.Provider>      
     </div>
   );
