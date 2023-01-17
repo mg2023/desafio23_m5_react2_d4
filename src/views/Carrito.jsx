@@ -16,7 +16,7 @@ export default function Carrito() {
           <ul>
             {carrito.map((item) => (
               <li key={item.id}>
-                {/* {<img src={item.img} alt="Imagen pizza" style={{ width: '100px', }} />} */}
+                {<img src={item.img} alt="Imagen pizza" style={{ width: '100px', }} />}
                 {item.name}
                 {item.quantity}
               </li>
