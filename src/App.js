@@ -16,7 +16,7 @@ function App() {
   const sharedPizzasContexState = { pizzas, setPizzas }
 
   const [carrito, setCarrito] = useState([])
-  const sharedCarritoContexState = {carrito, setCarrito }
+  const sharedCarritoContexState = { carrito, setCarrito }
 
   const getPizzas = async () => {
     const response = await fetch(endpoint)
@@ -30,18 +30,19 @@ function App() {
 
   return (
     <div className="App">
-      <PizzasContext.Provider value={sharedPizzasContexState}>
+      
       <CarritoContext.Provider value={sharedCarritoContexState}>
+      <PizzasContext.Provider value={sharedPizzasContexState}>
         <Router>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/pizza/:id" element={<Pizza />} />
-            <Route path="/carrito" element={<Carrito />} />
+            <Route path="/carrito" element={<Carrito pizzas={pizzas}/>} />
           </Routes>
-        </Router>        
-      </CarritoContext.Provider>   
-      </PizzasContext.Provider>      
+        </Router>                
+      </PizzasContext.Provider>  
+      </CarritoContext.Provider>     
     </div>
   );
 }

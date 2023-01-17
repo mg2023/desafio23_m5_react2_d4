@@ -1,11 +1,12 @@
-// import { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
+
 import Container from 'react-bootstrap/Container';
-import { useContext, useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 
 import PizzasContext from "../contexts/PizzasContext";
 import CarritoContext from "../contexts/CarritoContext";
+
 import "../assets/css/pizza.css"
 
 const Pizza = () => {
@@ -13,6 +14,9 @@ const Pizza = () => {
   const { pizzas } = useContext(PizzasContext)
   const { carrito, setCarrito  } = useContext(CarritoContext)
 
+
+
+  // console.log(typeof(pizzas))
   const pizza = pizzas.filter(pizza => pizza.id === id)
 
   const agregarAlCarrito = (id, price) => {
@@ -34,6 +38,7 @@ const Pizza = () => {
     });
   };
 
+  // console.log(pizzas)
   return (
     <>
       {pizza.length > 0 ?
