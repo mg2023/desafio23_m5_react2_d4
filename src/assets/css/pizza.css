@@ -13,3 +13,33 @@
 
 
 }
+
+.name-pizza p:first-letter{
+    text-transform: uppercase;
+    
+}
+
+.name-pizza{
+    font-size: 20px;
+}
+
+.listado-ingredientes{
+    list-style:none; 
+    padding-top: 10px;
+}
+
+.titulo-ingredientes{
+    padding-top: 10px;
+    font-weight: bold;
+
+}
+
+.boton-y-precio{
+    display:flex;
+    justify-content: space-between;
+}
+
+.precio{
+    font-size: 25px;
+    font-weight: bold;
+}

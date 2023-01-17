@@ -11,10 +11,10 @@ import "../assets/css/pizza.css"
 
 import pizzas from "../data/pizzas.json"
 
-export default function Pizza () {
+export default function Pizza() {
   const { id } = useParams()
   // const { pizzas } = useContext(PizzasContext)
-  const { setCarrito  } = useContext(CarritoContext)
+  const { setCarrito } = useContext(CarritoContext)
 
   const pizza = pizzas.filter(pizza => pizza.id === id)
 
@@ -32,7 +32,7 @@ export default function Pizza () {
           }
         });
       } else {
-        return [...currItems, { id, quantity: 1, price , img, name }];
+        return [...currItems, { id, quantity: 1, price, img, name }];
       }
     });
   };
@@ -45,18 +45,20 @@ export default function Pizza () {
             <img className="img-pizza-seleccionada" src={pizza[0].img} alt="imagen de referencia pizza" />
           </div>
           <div className='info-pizza'>
-            <div> {pizza[0].name}</div>
+            <div className='name-pizza'>
+              <p>{pizza[0].name}</p></div>
             <div> {pizza[0].desc}</div>
-            <div> Ingredientes</div>
-        
-            <ul>
+            <div className='titulo-ingredientes'> Ingredientes:</div>
+
+            <ul className='listado-ingredientes'>
               {pizza[0].ingredients.map((ingredient, i) => (
                 <li key={i}>🍕 {ingredient}</li>
               ))}
             </ul>
-            <div>Precio: {pizza[0].price}</div>
-            {/* <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price)}>Añadir🛒</Button> */}
-            <Button variant="danger" onClick={() => agregarAlCarrito(pizza[0].id, pizza[0].price, pizza[0].name, pizza[0].img)}>Añadir🛒</Button>
+            <div className='boton-y-precio'>
+              <div className='precio'>Precio: $ {pizza[0].price}</div>
+              <Button variant="danger" onClick={() => agregarAlCarrito(pizza[0].id, pizza[0].price, pizza[0].name, pizza[0].img)}>Añadir🛒</Button>
+            </div>
           </div>
         </Container>
         :

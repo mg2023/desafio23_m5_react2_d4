@@ -48,12 +48,12 @@ export default function Home() {
         backgroundImage: `url(${fotopizza})`,
       }}>
       </div>
-      <Container className="galeria grid-columns-3">
+      <Container className="galeria grid-columns-3 pt-5">
         {pizzas.map((pizza) => (
           <Card key={pizza.id} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={pizza.img} />
             <Card.Body>
-              <Card.Title>{pizza.name}</Card.Title>
+              <Card.Title className="name-pizza">{pizza.name}</Card.Title>
               <Card.Title>Ingredientes:</Card.Title>
               <ul>
                 {pizza.ingredients.map((ingredientes, id) => (
@@ -62,12 +62,15 @@ export default function Home() {
                 ))}
               </ul>
               <Card.Text>
-                {pizza.price}
-                {/* {pizza.desc} */}
+                <div className="precio-pizza">
+                  ${pizza.price}
+                </div>  
               </Card.Text>
-              <Button variant="primary" onClick={() => navigate(`/pizza/${pizza.id}`) } >Ver más👀</Button>
+              <div className="botones">
+              <Button variant="primary" onClick={() => navigate(`/pizza/${pizza.id}`) } >Ver más 👀</Button>
               {/* Aca no entiendo por que al onclick no se le puede pasar una funcion directamente y tiene que ser con funcion flecha */}
-              <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price, pizza.name, pizza.img)}>Añadir🛒</Button>
+              <Button variant="danger" onClick={() => agregarAlCarrito(pizza.id, pizza.price, pizza.name, pizza.img)}>Añadir 🛒</Button>
+              </div>
               
             </Card.Body>
           </Card>

@@ -11,7 +11,7 @@ export default function Carrito() {
   const { carrito, setCarrito } = useContext(CarritoContext)
 
   const agregarAlCarrito = (id, price, name, img) => {
- 
+
     setCarrito((currItems) => {
       const isItemsFound = currItems.find((item) => item.id === id);
       if (isItemsFound) {
@@ -55,11 +55,11 @@ export default function Carrito() {
 
 
   return (
-    <Container className='mt-2'>
+    <Container className='mt-4 container-listado-compra'>
       <div >
         <h3>Detalles del pedido</h3>
         <div>
-          <ul className='listado-compra'>
+          <ul className='listado-compra list-group'>
             {carrito.map((item) => (
               <li key={item.id}>
 
@@ -67,11 +67,14 @@ export default function Carrito() {
                   <div className="col-2">
                     {<img src={item.img} alt="Imagen pizza" style={{ width: '100px', }} />}
                   </div>
-                  <div className="col-2 name-pizza">
+                  <div className="col-2 name-pizza text-start">
                     <p>{item.name}</p>
                   </div>
-                  <div className="col-5">
-        
+                  <div className="col-3">
+
+                  </div>
+                  <div className="col-2 ">
+                    <p className='text-success text-end'>$  {getQuantityById(item.id) * item.price} </p>
                   </div>
                   <div className="col-1">
                     {
@@ -81,7 +84,7 @@ export default function Carrito() {
                     }
                   </div>
                   <div className="col-1">
-                  {item.quantity}
+                    {item.quantity}
                   </div>
                   <div className="col-1">
                     <Button variant="primary" onClick={() => agregarAlCarrito(item.id, item.price, item.name, item.img)}> + </Button>
@@ -91,9 +94,11 @@ export default function Carrito() {
             ))}
           </ul>
           <div className='valor-total-carrito'>
-          Total: ${totalPrice}
+            Total: ${totalPrice}
+          </div >
+          <div className='boton-pagar'>
+            <Button variant="success">Pagar</Button>
           </div>
-          <Button variant="danger">Pagar</Button>
         </div>
       </div>
     </Container>

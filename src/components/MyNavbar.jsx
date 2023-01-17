@@ -19,10 +19,10 @@ export default function MyNavbar() {
     <Navbar bg="info" variant="dark">
       <Container className='myNavbar'>
         <div>
-          <Link className='links' to="/">🍕Pizzeria Mamma Mia! </Link>
+          <Link className='links icono-navbar' to="/">🍕Pizzeria Mamma Mia! </Link>
         </div>
         <Navbar.Collapse className="justify-content-end">
-          <Link to="/carrito">🛒  </Link>
+          <Link className='icono-navbar' to="/carrito">🛒  </Link>
           <div className='links' >
             $  {totalPrice}
           </div>
